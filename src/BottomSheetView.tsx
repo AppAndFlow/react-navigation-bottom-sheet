@@ -2,7 +2,6 @@ import {
   BottomSheetModal,
   BottomSheetModalProps,
   BottomSheetModalProvider,
-  BottomSheetView as RNBottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { ParamListBase, useTheme } from '@react-navigation/native';
 import * as React from 'react';
@@ -90,11 +89,7 @@ function BottomSheetModalScreen({
       onDismiss={onDismiss}
       {...props}
     >
-      {enableDynamicSizing ? (
-        <RNBottomSheetView>{children as React.ReactNode}</RNBottomSheetView>
-      ) : (
-        children
-      )}
+      {children}
     </BottomSheetModal>
   );
 }
