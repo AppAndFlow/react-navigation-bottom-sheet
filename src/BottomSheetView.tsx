@@ -21,7 +21,7 @@ type BottomSheetModalScreenProps = BottomSheetModalProps & {
   navigation: BottomSheetNavigationProp<ParamListBase>;
 };
 
-function Overlay({ children }: { children: React.ReactNode }) {
+function Overlay({ children }: { children?: React.ReactNode }) {
   if (Platform.OS === 'ios') {
     return (
       <FullWindowOverlay>
@@ -132,51 +132,50 @@ export function BottomSheetView({ state, descriptors }: Props) {
   return (
     <>
       {firstScreen.render()}
-      <Overlay>
-        {shouldRenderProvider.current && (
-          <BottomSheetModalProvider>
-            {state.routes.slice(1).map((route) => {
-              const { options, navigation, render } = descriptors[route.key];
+      {shouldRenderProvider.current && (
+        <BottomSheetModalProvider>
+          {state.routes.slice(1).map((route) => {
+            const { options, navigation, render } = descriptors[route.key];
 
-              const {
-                index,
-                backgroundStyle,
-                handleIndicatorStyle,
-                snapPoints,
-                enableDynamicSizing,
-                ...sheetProps
-              } = options;
+            const {
+              index,
+              backgroundStyle,
+              handleIndicatorStyle,
+              snapPoints,
+              enableDynamicSizing,
+              ...sheetProps
+            } = options;
 
-              return (
-                <BottomSheetModalScreen
-                  key={route.key}
-                  // Make sure index is in range, it could be out if snapToIndex is persisted
-                  // and snapPoints is changed.
-                  index={Math.min(
-                    route.snapToIndex ?? index ?? 0,
-                    snapPoints != null ? snapPoints.length - 1 : 0,
-                  )}
-                  snapPoints={
-                    snapPoints == null && !enableDynamicSizing
-                      ? DEFAULT_SNAP_POINTS
-                      : snapPoints
-                  }
-                  enableDynamicSizing={enableDynamicSizing}
-                  navigation={navigation}
-                  backgroundStyle={[themeBackgroundStyle, backgroundStyle]}
-                  handleIndicatorStyle={[
-                    themeHandleIndicatorStyle,
-                    handleIndicatorStyle,
-                  ]}
-                  {...sheetProps}
-                >
-                  {render()}
-                </BottomSheetModalScreen>
-              );
-            })}
-          </BottomSheetModalProvider>
-        )}
-      </Overlay>
+            return (
+              <BottomSheetModalScreen
+                key={route.key}
+                // Make sure index is in range, it could be out if snapToIndex is persisted
+                // and snapPoints is changed.
+                index={Math.min(
+                  route.snapToIndex ?? index ?? 0,
+                  snapPoints != null ? snapPoints.length - 1 : 0,
+                )}
+                snapPoints={
+                  snapPoints == null && !enableDynamicSizing
+                    ? DEFAULT_SNAP_POINTS
+                    : snapPoints
+                }
+                enableDynamicSizing={enableDynamicSizing}
+                navigation={navigation}
+                backgroundStyle={[themeBackgroundStyle, backgroundStyle]}
+                handleIndicatorStyle={[
+                  themeHandleIndicatorStyle,
+                  handleIndicatorStyle,
+                ]}
+                containerComponent={Overlay}
+                {...sheetProps}
+              >
+                {render()}
+              </BottomSheetModalScreen>
+            );
+          })}
+        </BottomSheetModalProvider>
+      )}
     </>
   );
 }
