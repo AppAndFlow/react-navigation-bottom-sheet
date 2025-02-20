@@ -1,22 +1,21 @@
 import {
   BottomSheetBackdrop,
-  BottomSheetBackdropProps,
-} from '@gorhom/bottom-sheet';
-import { NavigationContainer } from '@react-navigation/native';
+  type BottomSheetBackdropProps,
+} from '@gorhom/bottom-sheet'
+import { NavigationContainer } from '@react-navigation/native'
 import {
-  BottomSheetScreenProps,
+  type BottomSheetScreenProps,
   createBottomSheetNavigator,
-} from '@th3rdwave/react-navigation-bottom-sheet';
-import * as React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+} from '@craftzdog/react-navigation-bottom-sheet'
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 type BottomSheetParams = {
-  Home: undefined;
-  Sheet: { id: number };
-  BigSheet: { id: number };
-};
+  Home: undefined
+  Sheet: { id: number }
+  BigSheet: { id: number }
+}
 
-const BottomSheet = createBottomSheetNavigator<BottomSheetParams>();
+const BottomSheet = createBottomSheetNavigator<BottomSheetParams>()
 
 function HomeScreen({
   navigation,
@@ -28,24 +27,24 @@ function HomeScreen({
       <Button
         title="Open sheet"
         onPress={() => {
-          navigation.navigate('Sheet', { id: 1 });
+          navigation.navigate('Sheet', { id: 1 })
         }}
       />
       <View style={styles.spacer} />
       <Button
         title="Open a big sheet"
         onPress={() => {
-          navigation.navigate('BigSheet', { id: 1 });
+          navigation.navigate('BigSheet', { id: 2 })
         }}
       />
     </View>
-  );
+  )
 }
 
 function SheetScreen({
   route,
   navigation,
-}: BottomSheetScreenProps<BottomSheetParams, 'Sheet'>) {
+}: BottomSheetScreenProps<BottomSheetParams, 'Sheet' | 'BigSheet'>) {
   return (
     <View style={[styles.container, styles.content]}>
       <Text>Sheet Screen {route.params.id}</Text>
@@ -53,21 +52,21 @@ function SheetScreen({
       <Button
         title="Open new sheet"
         onPress={() => {
-          navigation.navigate('Sheet', { id: route.params.id + 1 });
+          navigation.navigate('Sheet', { id: route.params.id + 1 })
         }}
       />
       <View style={styles.spacer} />
       <Button
         title="Open new big sheet"
         onPress={() => {
-          navigation.navigate('BigSheet', { id: route.params.id + 1 });
+          navigation.navigate('BigSheet', { id: route.params.id + 1 })
         }}
       />
       <View style={styles.spacer} />
       <Button
         title="Close this sheet"
         onPress={() => {
-          navigation.goBack();
+          navigation.goBack()
         }}
       />
       {route.name === ('BigSheet' as unknown) && (
@@ -76,24 +75,25 @@ function SheetScreen({
           <Button
             title="Snap to top"
             onPress={() => {
-              navigation.snapTo(1);
+              navigation.snapTo(1)
             }}
           />
         </>
       )}
     </View>
-  );
+  )
 }
 
 const renderBackdrop = (props: BottomSheetBackdropProps) => (
   <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
-);
+)
 
 export function SimpleExample() {
   return (
     <NavigationContainer>
       <BottomSheet.Navigator
         screenOptions={{
+          enableDynamicSizing: false,
           backdropComponent: renderBackdrop,
         }}
       >
@@ -107,13 +107,13 @@ export function SimpleExample() {
           name="BigSheet"
           component={SheetScreen}
           options={{
-            snapPoints: ['50%', '80%'],
+            snapPoints: ['60%', '80%'],
           }}
           getId={({ params }) => `sheet-${params.id}`}
         />
       </BottomSheet.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
   spacer: {
     margin: 5,
   },
-});
+})

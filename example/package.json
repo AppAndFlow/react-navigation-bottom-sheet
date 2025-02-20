@@ -1,33 +1,29 @@
 {
-  "name": "@th3rdwave/react-navigation-bottom-sheet-example",
-  "description": "Example app for @th3rdwave/react-navigation-bottom-sheet",
-  "version": "0.0.1",
-  "private": true,
-  "main": "index",
+  "name": "@craftzdog/react-navigation-bottom-sheet-example",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
+    "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "start": "expo start",
-    "test": "jest"
+    "web": "expo start --web"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^4.6.3",
-    "@react-navigation/native": "^6.1.17",
-    "expo": "^51.0.9",
+    "@expo/metro-runtime": "~4.0.1",
+    "@gorhom/bottom-sheet": "^5.0.6",
+    "@react-navigation/native": "^7.0.14",
+    "expo": "~52.0.28",
+    "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.74.1",
-    "react-native-gesture-handler": "2.16.2",
-    "react-native-reanimated": "3.11.0",
-    "react-native-web": "0.19.12"
+    "react-native": "0.76.6",
+    "react-native-gesture-handler": "^2.23.1",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-web": "~0.19.13"
   },
   "devDependencies": {
-    "@babel/core": "~7.24.6",
-    "@babel/runtime": "^7.24.6",
-    "@types/react": "~18.3.3",
-    "babel-plugin-module-resolver": "^5.0.2",
-    "babel-preset-expo": "11.0.6",
-    "expo-cli": "^6.3.12"
-  }
+    "@babel/core": "^7.20.0",
+    "react-native-builder-bob": "^0.32.0"
+  },
+  "private": true
 }

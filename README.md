@@ -1,4 +1,4 @@
-# @th3rdwave/react-navigation-bottom-sheet
+# @craftzdog/react-navigation-bottom-sheet
 
 Bottom sheet navigator for React Navigation.
 

@@ -1,22 +1,30 @@
 {
-  "name": "@th3rdwave/react-navigation-bottom-sheet-example",
-  "displayName": "ReactNavigationBottomSheet Example",
   "expo": {
-    "name": "@th3rdwave/react-navigation-bottom-sheet-example",
-    "slug": "th3rdwave-react-navigation-bottom-sheet-example",
-    "description": "Example app for @th3rdwave/react-navigation-bottom-sheet",
-    "privacy": "public",
+    "name": "example",
+    "slug": "example",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "ios": {
-      "supportsTablet": true
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "craftzdog.reactnavigationbottomsheet.example"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "craftzdog.reactnavigationbottomsheet.example"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
