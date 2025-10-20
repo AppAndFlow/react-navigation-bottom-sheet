@@ -1,11 +1,11 @@
 import { nanoid } from 'nanoid/non-secure';
 import {
-  ParamListBase,
-  Router,
+  type ParamListBase,
+  type Router,
   StackRouter,
-  StackActionType,
+  type StackActionType,
   StackActions,
-  StackRouterOptions,
+  type StackRouterOptions,
 } from '@react-navigation/native';
 import type { BottomSheetNavigationState } from './types';
 
@@ -28,7 +28,7 @@ export const BottomSheetActions = {
 };
 
 export function BottomSheetRouter(
-  routerOptions: StackRouterOptions,
+  routerOptions: StackRouterOptions
 ): Router<BottomSheetNavigationState<ParamListBase>, BottomSheetActionType> {
   const baseRouter = StackRouter(routerOptions) as unknown as Router<
     BottomSheetNavigationState<ParamListBase>,
@@ -62,7 +62,7 @@ export function BottomSheetRouter(
                     ...route,
                     snapToIndex: action.index,
                   }
-                : route,
+                : route
             ),
           };
         }
@@ -72,7 +72,7 @@ export function BottomSheetRouter(
     },
     getRehydratedState(
       partialState,
-      { routeNames, routeParamList, routeGetIdList },
+      { routeNames, routeParamList, routeGetIdList }
     ) {
       if (partialState.stale === false) {
         return partialState;

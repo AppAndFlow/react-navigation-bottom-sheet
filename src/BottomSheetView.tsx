@@ -1,10 +1,10 @@
 import {
   BottomSheetModal,
-  BottomSheetModalProps,
+  type BottomSheetModalProps,
   BottomSheetModalProvider,
   BottomSheetView as RNBottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { ParamListBase, useTheme } from '@react-navigation/native';
+import { type ParamListBase, useTheme } from '@react-navigation/native';
 import * as React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -70,7 +70,7 @@ function BottomSheetModalScreen({
         navigation.snapTo(newIndex);
       }
     },
-    [navigation],
+    [navigation]
   );
 
   const onDismiss = React.useCallback(() => {
@@ -113,21 +113,26 @@ export function BottomSheetView({ state, descriptors }: Props) {
     () => ({
       backgroundColor: colors.card,
     }),
-    [colors.card],
+    [colors.card]
   );
   const themeHandleIndicatorStyle = React.useMemo(
     () => ({
       backgroundColor: colors.border,
     }),
-    [colors.border],
+    [colors.border]
   );
 
-  // Avoid rendering provider if we only have one screen.
   const shouldRenderProvider = React.useRef(false);
+  // Avoid rendering provider if we only have one screen.
   shouldRenderProvider.current =
     shouldRenderProvider.current || state.routes.length > 1;
 
-  const firstScreen = descriptors[state.routes[0].key];
+  const firstScreenKey = state.routes[0]?.key;
+  const firstScreen = firstScreenKey ? descriptors[firstScreenKey] : undefined;
+
+  if (!firstScreen) {
+    return null;
+  }
 
   return (
     <>
@@ -136,8 +141,13 @@ export function BottomSheetView({ state, descriptors }: Props) {
         {shouldRenderProvider.current && (
           <BottomSheetModalProvider>
             {state.routes.slice(1).map((route) => {
-              const { options, navigation, render } = descriptors[route.key];
+              const descriptor = descriptors[route.key];
 
+              if (!descriptor) {
+                return null;
+              }
+
+              const { options, navigation, render } = descriptor;
               const {
                 index,
                 backgroundStyle,
@@ -154,7 +164,7 @@ export function BottomSheetView({ state, descriptors }: Props) {
                   // and snapPoints is changed.
                   index={Math.min(
                     route.snapToIndex ?? index ?? 0,
-                    snapPoints != null ? snapPoints.length - 1 : 0,
+                    snapPoints != null ? snapPoints.length - 1 : 0
                   )}
                   snapPoints={
                     snapPoints == null && !enableDynamicSizing

@@ -1,19 +1,22 @@
 import {
   createNavigatorFactory,
-  ParamListBase,
-  StackNavigationState,
+  type NavigatorTypeBagBase,
+  type ParamListBase,
+  type StackNavigationState,
+  type StaticConfig,
+  type TypedNavigator,
   useNavigationBuilder,
 } from '@react-navigation/native';
-import * as React from 'react';
 import {
   BottomSheetRouter,
-  BottomSheetRouterOptions,
+  type BottomSheetRouterOptions,
 } from './BottomSheetRouter';
 import { BottomSheetView } from './BottomSheetView';
 import type {
   BottomSheetActionHelpers,
   BottomSheetNavigationEventMap,
   BottomSheetNavigationOptions,
+  BottomSheetNavigationProp,
   BottomSheetNavigationState,
   BottomSheetNavigatorProps,
 } from './types';
@@ -51,9 +54,27 @@ function BottomSheetNavigator({
   );
 }
 
-export const createBottomSheetNavigator = createNavigatorFactory<
-  StackNavigationState<ParamListBase>,
-  BottomSheetNavigationOptions,
-  BottomSheetNavigationEventMap,
-  typeof BottomSheetNavigator
->(BottomSheetNavigator);
+export const createBottomSheetNavigator = <
+  const ParamList extends ParamListBase,
+  const NavigatorID extends string | undefined = undefined,
+  const TypeBag extends NavigatorTypeBagBase = {
+    ParamList: ParamList;
+    NavigatorID: NavigatorID;
+    State: StackNavigationState<ParamList>;
+    ScreenOptions: BottomSheetNavigationOptions;
+    EventMap: BottomSheetNavigationEventMap;
+    NavigationList: {
+      [RouteName in keyof ParamList]: BottomSheetNavigationProp<
+        ParamList,
+        RouteName,
+        NavigatorID
+      >;
+    };
+    Navigator: typeof BottomSheetNavigator;
+  },
+  const Config extends StaticConfig<TypeBag> = StaticConfig<TypeBag>,
+>(
+  config?: Config
+): TypedNavigator<TypeBag, Config> => {
+  return createNavigatorFactory(BottomSheetNavigator)(config);
+};
