@@ -3031,6 +3031,7 @@ __metadata:
     "@expo/metro-runtime": ~6.1.2
     "@gorhom/bottom-sheet": ^5.2.6
     "@react-navigation/native": ^7.1.18
+    "@th3rdwave/react-navigation-bottom-sheet": "*"
     expo: ~54.0.13
     expo-status-bar: ~3.0.8
     react: 19.1.0
@@ -3046,6 +3047,20 @@ __metadata:
     react-native-worklets: 0.5.1
   languageName: unknown
   linkType: soft
+
+"@th3rdwave/react-navigation-bottom-sheet@npm:*":
+  version: 0.3.2
+  resolution: "@th3rdwave/react-navigation-bottom-sheet@npm:0.3.2"
+  peerDependencies:
+    "@gorhom/bottom-sheet": "*"
+    "@react-navigation/native": "*"
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: "*"
+    react-native-screens: "*"
+  checksum: 203682b4e47922ab4352c3d349ca3b78cbbb1fe8d13ebc3decc846463501c61698357227bfe45bd1a05b41ffb1a980925c93896e0902972af80b89862c15b206
+  languageName: node
+  linkType: hard
 
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
