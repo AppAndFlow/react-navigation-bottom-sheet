@@ -2,6 +2,7 @@ import type { BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import type {
   DefaultNavigatorOptions,
   Descriptor,
+  EventMapBase,
   NavigationHelpers,
   NavigationProp,
   NavigationState,
@@ -11,7 +12,7 @@ import type {
 } from '@react-navigation/native';
 
 // TODO: Sheet open / close / snap / events.
-export type BottomSheetNavigationEventMap = {};
+export type BottomSheetNavigationEventMap = EventMapBase;
 
 export type BottomSheetNavigationState<ParamList extends ParamListBase> = Omit<
   NavigationState<ParamList>,
@@ -61,7 +62,7 @@ export type BottomSheetNavigationHelpers = NavigationHelpers<
 >;
 
 // We want it to be an empty object because navigator does not have any additional props
-export type BottomSheetNavigationConfig = {};
+export type BottomSheetNavigationConfig = Record<string, unknown>;
 
 export type BottomSheetNavigationOptions = Omit<
   BottomSheetModalProps,
@@ -93,9 +94,11 @@ export type BottomSheetNavigationOptions = Omit<
 
 export type BottomSheetNavigatorProps = DefaultNavigatorOptions<
   ParamListBase,
+  string | undefined,
   BottomSheetNavigationState<ParamListBase>,
   BottomSheetNavigationOptions,
-  BottomSheetNavigationEventMap
+  BottomSheetNavigationEventMap,
+  unknown
 > &
   BottomSheetNavigationConfig;
 

@@ -1,13 +1,12 @@
 import {
   BottomSheetBackdrop,
-  BottomSheetBackdropProps,
+  type BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import {
-  BottomSheetScreenProps,
+  type BottomSheetScreenProps,
   createBottomSheetNavigator,
 } from '@th3rdwave/react-navigation-bottom-sheet';
-import * as React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 type BottomSheetParams = {
@@ -45,7 +44,7 @@ function HomeScreen({
 function SheetScreen({
   route,
   navigation,
-}: BottomSheetScreenProps<BottomSheetParams, 'Sheet'>) {
+}: BottomSheetScreenProps<BottomSheetParams, 'Sheet' | 'BigSheet'>) {
   return (
     <View style={[styles.container, styles.content]}>
       <Text>Sheet Screen {route.params.id}</Text>
@@ -70,7 +69,7 @@ function SheetScreen({
           navigation.goBack();
         }}
       />
-      {route.name === ('BigSheet' as unknown) && (
+      {route.name === 'BigSheet' && (
         <>
           <View style={styles.spacer} />
           <Button
@@ -95,6 +94,7 @@ export function SimpleExample() {
       <BottomSheet.Navigator
         screenOptions={{
           backdropComponent: renderBackdrop,
+          enableDynamicSizing: false,
         }}
       >
         <BottomSheet.Screen name="Home" component={HomeScreen} />
