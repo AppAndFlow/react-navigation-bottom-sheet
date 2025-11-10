@@ -1,6 +1,6 @@
 {
   "name": "@th3rdwave/react-navigation-bottom-sheet",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Bottom sheet component for React Navigation",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
