@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {
   type BottomSheetScreenProps,
   createBottomSheetNavigator,
-} from '@th3rdwave/react-navigation-bottom-sheet';
+} from '@appandflow/react-navigation-bottom-sheet';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 type BottomSheetParams = {
@@ -107,7 +107,7 @@ export function SimpleExample() {
           name="BigSheet"
           component={SheetScreen}
           options={{
-            snapPoints: ['50%', '80%'],
+            snapPoints: ['60%', '80%'],
           }}
           getId={({ params }) => `sheet-${params.id}`}
         />

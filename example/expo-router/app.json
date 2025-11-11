@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "@th3rdwave/react-navigation-bottom-sheet-example",
-    "slug": "th3rdwave-react-navigation-bottom-sheet-example",
-    "description": "Example app for @th3rdwave/react-navigation-bottom-sheet",
+    "name": "@appandflow/react-navigation-bottom-sheet expo-router",
+    "slug": "appandflow-react-navigation-bottom-sheet-expo-router",
+    "description": "Expo Router example app for @appandflow/react-navigation-bottom-sheet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "testlibrary.example"
+      "bundleIdentifier": "testlibrary.example.exporouter"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,10 +23,14 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "testlibrary.example"
+      "package": "testlibrary.example.exporouter"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
