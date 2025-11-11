@@ -1,6 +1,6 @@
 {
   "name": "@appandflow/react-navigation-bottom-sheet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Bottom sheet component for React Navigation and Expo Router",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
