@@ -65,8 +65,9 @@ function BottomSheetModalScreen({
 
   const onChange = React.useCallback(
     (newIndex: number) => {
+      const currentIndex = lastIndexRef.current;
       lastIndexRef.current = newIndex;
-      if (newIndex >= 0) {
+      if (newIndex >= 0 && newIndex !== currentIndex) {
         navigation.snapTo(newIndex);
       }
     },
