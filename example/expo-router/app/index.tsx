@@ -8,7 +8,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text>Home Screen</Text>
       <View style={styles.spacer} />
-      {/* @ts-expect-error - Suppress the error since the runtime will work fine */}
+      {/* @ts-ignore - Suppress the error since the runtime will work fine */}
       <Link href="/sheet?id=1" asChild>
         <Button title="Open sheet" />
       </Link>
