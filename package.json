@@ -1,7 +1,7 @@
 {
-  "name": "@th3rdwave/react-navigation-bottom-sheet",
+  "name": "@appandflow/react-navigation-bottom-sheet",
   "version": "1.0.0",
-  "description": "Bottom sheet component for React Navigation",
+  "description": "Bottom sheet component for React Navigation and Expo Router",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -32,7 +32,9 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @th3rdwave/react-navigation-bottom-sheet-example",
+    "example": "yarn workspace @appandflow/react-navigation-bottom-sheet-example-react-navigation start",
+    "example:react-navigation": "yarn workspace @appandflow/react-navigation-bottom-sheet-example-react-navigation start",
+    "example:expo-router": "yarn workspace @appandflow/react-navigation-bottom-sheet-example-expo-router start",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -43,15 +45,16 @@
   "keywords": [
     "react-native",
     "react-navigation",
-    "bottom-sheet"
+    "bottom-sheet",
+    "expo-router"
   ],
-  "repository": "https://github.com/th3rdwave/react-navigation-bottom-sheet",
+  "repository": "https://github.com/AppAndFlow/react-navigation-bottom-sheet",
   "author": "Janic Duplessis <janicduplessis@gmail.com> (https://github.com/janicduplessis)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/th3rdwave/react-navigation-bottom-sheet/issues"
+    "url": "https://github.com/AppAndFlow/react-navigation-bottom-sheet/issues"
   },
-  "homepage": "https://github.com/th3rdwave/react-navigation-bottom-sheet#readme",
+  "homepage": "https://github.com/AppAndFlow/react-navigation-bottom-sheet#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -92,7 +95,7 @@
     "react-native-screens": "*"
   },
   "workspaces": [
-    "example"
+    "example/*"
   ],
   "jest": {
     "preset": "react-native",
