@@ -1,7 +1,7 @@
 import { Button, Text, View } from 'react-native';
 import { useBottomSheetNavigation } from '@appandflow/react-navigation-bottom-sheet';
-import { styles } from '../lib/styles';
-import type { BottomSheetParamList } from '../lib/types';
+import { styles } from '../utils/styles';
+import type { BottomSheetParamList } from '../utils/types';
 import { useLocalSearchParams, usePathname, useRouter } from 'expo-router';
 
 export default function SheetScreen() {

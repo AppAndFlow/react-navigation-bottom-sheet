@@ -3,7 +3,7 @@ import type { BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { createBottomSheetNavigator } from '@appandflow/react-navigation-bottom-sheet';
 import { withLayoutContext } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import type { BottomSheetParamList } from '../lib/types';
+import type { BottomSheetParamList } from '../utils/types';
 
 const BottomSheetNavigator = createBottomSheetNavigator<BottomSheetParamList>();
 
