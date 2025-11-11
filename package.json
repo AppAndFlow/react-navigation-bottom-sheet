@@ -4,6 +4,7 @@
   "description": "Bottom sheet component for React Navigation and Expo Router",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
+  "private": false,
   "exports": {
     ".": {
       "source": "./src/index.tsx",
